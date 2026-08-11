@@ -51,3 +51,4 @@ L'app ricorda di esportare i dati se l'ultimo backup risale a più di 7 giorni f
 - **Obiettivo giornaliero**: massimo di sigarette al giorno mostrato in Casa (es. `2 / 10`).
 - **Record assoluto**: parte dal valore di base `813:53:02` (il record della
   vecchia app) e si aggiorna da solo se lo superi; è modificabile o azzerabile.
+
