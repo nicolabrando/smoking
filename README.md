@@ -4,16 +4,6 @@ App per contare sigarette e Nicorette, con timer "dall'ultima", intervallo
 massimo di oggi, record assoluto, analitica e storico per giorno.
 I dati restano **solo sul dispositivo** (localStorage): non vengono inviati da nessuna parte.
 
-## Come pubblicare la prima volta
-
-1. Su GitHub: **New repository**, nome `conta-sigarette`, visibilità Public.
-2. Carica in radice tutti i file di questa cartella (inclusa `icons/`) sul branch `main`.
-3. Nel repo: **Settings → Pages → Source: Deploy from a branch → `main` / `(root)` → Save**.
-4. Dopo 1-2 minuti l'app è su: `https://nicolabrando.github.io/conta-sigarette/`
-
-Per gli aggiornamenti successivi basta sostituire i file e fare commit su `main`:
-GitHub Pages ripubblica da solo.
-
 ## Importante quando modifichi i file
 
 Il service worker serve i file dalla cache. **A ogni modifica cambia
