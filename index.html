@@ -356,6 +356,7 @@ section.view.active{display:block}
         <input type="file" id="fileInput" accept=".csv,text/csv,text/plain" style="display:none">
       </div>
       <p style="margin-top:10px">Ultimo backup: <b id="lastExport">mai</b></p>
+      <p style="margin-top:6px">Archiviazione protetta: <b id="persistState">—</b></p>
     </div>
 
     <div class="card">
@@ -1046,6 +1047,18 @@ switchView('home');
 window.__app = { get state(){ return state; }, exportCsvString, parseCsv, addEvent, recordAbs, dayMax };
 
 /* service worker */
+/* Archiviazione persistente: chiede al browser di NON eliminare i dati
+   del sito quando fa pulizia automatica per liberare spazio.
+   Viene richiesta a ogni avvio finché non è concessa (nessun popup). */
+(function(){
+  const show = t => { const e = document.getElementById('persistState'); if (e) e.textContent = t; };
+  if (!(navigator.storage && navigator.storage.persist)) { show('non supportata da questo browser'); return; }
+  navigator.storage.persisted()
+    .then(p => p || navigator.storage.persist())
+    .then(p => show(p ? 'sì, attiva' : 'non ancora concessa dal browser'))
+    .catch(() => show('—'));
+})();
+
 if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
   window.addEventListener('load', ()=>{
     navigator.serviceWorker.register('./sw.js').catch(err=>{
